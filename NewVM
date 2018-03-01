@@ -5,7 +5,7 @@
     "vmName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the VM"
+        "description": "XMR2"
       }
     },
     "osType": {
@@ -15,7 +15,7 @@
         "Linux"
       ],
       "metadata": {
-        "description": "Type of OS on the existing vhd"
+        "description": "Linux"
       }
     },
     "osDiskVhdUri": {
@@ -33,19 +33,19 @@
     "vmSize": {
       "type": "string",
       "metadata": {
-        "description": "Size of the VM"
+        "description": "127GB"
       }
     },
     "existingVirtualNetworkName": {
       "type": "string",
       "metadata": {
-        "description": "Name of the existing VNET"
+        "description": "XMR"
       }
     },
     "existingVirtualNetworkResourceGroup": {
       "type": "string",
       "metadata": {
-        "description": "Name of the existing VNET resource group"
+        "description": "XMR"
       }
     },
     "subnetName": {
@@ -56,12 +56,12 @@
     }
   },
   "variables": {
-    "diagStorageAccountName": "[concat(parameters('vmName'), 'diag')]",   
+    "diagStorageAccountName": "[concat(parameters('XMR2'), 'diag')]",   
     "publicIPAddressType": "Dynamic",
-    "vnetID": "[resourceId(parameters('existingVirtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('existingVirtualNetworkName'))]",
+    "vnetID": "[resourceId(parameters('XMR'), 'Microsoft.Network/virtualNetworks', parameters('XMR'))]",
     "subnetRef": "[concat(variables('vnetID'),'/subnets/', parameters('subnetName'))]",
-    "nicName": "[concat(parameters('vmName'), '-nic1')]",
-    "publicIPAddressName": "[concat(parameters('vmName'), '-pip')]"
+    "nicName": "[concat(parameters('XMR2'), '-nic1')]",
+    "publicIPAddressName": "[concat(parameters('XMR2'), '-pip')]"
   },
   "resources": [
     {
@@ -128,12 +128,12 @@
       ],
       "properties": {
         "hardwareProfile": {
-          "vmSize": "[parameters('vmSize')]"
+          "vmSize": "[parameters('127GB')]"
         },
         "storageProfile": {
           "osDisk": {
-            "name": "[concat(parameters('vmName'),'-osDisk')]",
-            "osType": "[parameters('osType')]",
+            "name": "[concat(parameters('XMR2'),'-osDisk')]",
+            "osType": "[parameters('Linux')]",
             "caching": "ReadWrite",
             "vhd": {
               "uri": "[parameters('osDiskVhdUri')]"
@@ -142,7 +142,7 @@
           },
           "dataDisks": [
             {
-              "name": "[concat(parameters('vmName'),'-dataDisk0')]",
+              "name": "[concat(parameters('XMR2'),'-dataDisk0')]",
               "lun": 0,
               "vhd": {
                 "uri": "[parameters('dataDisk0VhdUri')]"
