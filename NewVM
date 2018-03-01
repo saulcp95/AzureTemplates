@@ -18,18 +18,6 @@
         "description": "Type of OS on the existing vhd"
       }
     },
-    "osDiskVhdUri": {
-      "type": "string",
-      "metadata": {
-        "description": "Uri of the existing OS VHD in ARM standard or premium storage"
-      }
-    },
-    "dataDisk0VhdUri": {
-      "type": "string",
-      "metadata": {
-        "description": "Uri of the existing data disk VHD in ARM standard or premium storage"
-      }
-    },
     "vmSize": {
       "type": "string",
       "metadata": {
